@@ -10,20 +10,20 @@ public class OrderRepository : Repository<OrderModel>, IOrderRepository
 {
     public OrderRepository(AppDbContext context) : base(context) { }
 
-    // public async Task<IEnumerable<OrderModel>> GetOrdersByCustomerIdAsync(int custumerId)
-    // {
-    //     var context = Context.Orders;
-    //     if (context == null) throw new DataException("In Orders Db context is nullable");
-    //
-    //     return await context.
-    //         Where(e => e.CustomerId == custumerId).
-    //         Include(o => o.Car).
-    //         ToListAsync();
-    // }
+    public async Task<IEnumerable<OrderModel>> GetOrdersByUserIdAsync(int userId)
+    {
+        var context = Context.Orders;
+        if (context == null) throw new DataException("In Orders Db context is nullable");
+    
+        return await context.
+            Where(e => e.UserId == userId).
+            Include(o => o.Car).
+            ToListAsync();
+    }
 
     public async Task<IEnumerable<OrderModel>> GetOrdersByDateRange(DateTime fromdate, DateTime todate)
     {
-        var context = Context.Orders;/*Include(c => c.Customer)*/
+        var context = Context.Orders;
         if (context == null) throw new DataException("In Orders Db context is nullable");
 
         return await context

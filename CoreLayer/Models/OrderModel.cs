@@ -12,8 +12,7 @@ public class OrderModel
     public int? CarId { get; set; }
     public CarModel? Car { get; set; }
     
-    // public int? CustomerId { get; set; }
-    // public CustomerModel? Customer { get; set; }
+    public int? UserId { get; set; }
     
     [DataType(DataType.Date)]
     [Column(TypeName = "timestamp with time zone")] 

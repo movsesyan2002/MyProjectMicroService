@@ -10,6 +10,7 @@ public class OrderDto
     [DataType(DataType.Date)]
     public DateTime OrderDate { get; set; }
     public decimal Price { get; set; }
+    public int UserId { get; set; }
     public int CarId { get; set; }
     public CarDto? Car { get; set; } 
 }

@@ -25,13 +25,21 @@ public class OrderController : ControllerBase
         return Ok(orders);
     }
 
-    [HttpGet("GetCarById")]
+    [HttpGet("GetCarById/{id:int}")]
     public async Task<ActionResult<OrderDto>> GetByIdAsync(int id)
     {
         var order = await _orderService.GetByIdAsync(id);
         if (!ModelState.IsValid) NotFound();
 
         return Ok(order);
+    }
+
+    [HttpGet("GetOrderByUserId")]
+    public async Task<ActionResult<OrderDto>> GetByUserIdAsync(int userId)
+    {
+        var orders = await _orderService.GetByUserIdAsync(userId);
+
+        return Ok(orders);
     }
     
     [HttpGet("GetWithCars/{id}")]

@@ -58,7 +58,14 @@ public class OrderService : IOrderService
         _orderRepository.Remove(entity);
     }
 
-   
+    public async Task<IEnumerable<OrderDto>> GetByUserIdAsync(int userId)
+    {
+        if (userId < 0) throw new BusinessRuleViolationException("Id is less than 0");
+    
+        var result = await _orderRepository.GetOrdersByUserIdAsync(userId);
+        if (result == null) throw new EntityNotFoundException($"User not fount with this {userId} Id");
+        return _mapper.Map<IEnumerable<OrderDto>>(result);
+    }
 
     public async Task<IEnumerable<OrderDto>> GetByWithCarsAsync(int orderId)
     {
