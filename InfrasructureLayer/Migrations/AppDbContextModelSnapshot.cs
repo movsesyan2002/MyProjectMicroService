@@ -111,6 +111,9 @@ namespace InfrasructureLayer.Migrations
                     b.Property<decimal?>("Price")
                         .HasColumnType("numeric");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("integer");
+
                     b.HasKey("OrderId");
 
                     b.HasIndex("CarId");

@@ -47,15 +47,15 @@ public class CarController : ControllerBase
     }
 
     [HttpPost("CreateCar")]
-    public async Task<IActionResult> Create([FromForm] CreateCarDto dto)
+    public async Task<IActionResult> Create([FromBody] CreateCarDto dto)
     {
-        /*var result =*/ await _carService.CreateAsync(dto);
+        var result = await _carService.CreateAsync(dto);
         if (!ModelState.IsValid) return BadRequest();
-        return Accepted(/*result*/);
+        return Accepted(result);
     }
 
     [HttpPut("UpdateCar/{id}")]
-    public async Task<IActionResult> Update(int id, [FromForm] UpdateCarDto dto)
+    public async Task<IActionResult> Update(int id, [FromBody] UpdateCarDto dto)
     {
         await _carService.UpdateCarAsync(id, dto);
         return NoContent();

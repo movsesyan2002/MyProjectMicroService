@@ -10,8 +10,8 @@ public interface ICarService
     Task<IEnumerable<CarDto>> GetByBrandAsync(string brandname, string modelname);
     Task<IEnumerable<CarDto>> GetByYearRangeAsync(int fromyear, int toyear);
     Task<IEnumerable<CarDto>> GetCarsWithEnginesAsync();
-    // Task<CarDto> CreateAsync(CreateCarDto dto);
-    Task CreateAsync(CreateCarDto dto);
+    Task<CarDto?> CreateAsync(CreateCarDto dto);
+    // Task CreateAsync(CreateCarDto dto);
     Task UpdateCarAsync(int id, UpdateCarDto uptadet);
     Task DeleteAsync(int id);
 }

@@ -55,7 +55,7 @@ public class ExceptionHandlingMiddleware
         ctx.Response.StatusCode = (int)code;
 
         var response = new
-        {
+        { 
             statusCode = (int)code,
             error = message,
             timestamp = DateTime.UtcNow

@@ -53,7 +53,7 @@ public class EngineController : ControllerBase
     }
 
     [HttpPost("CreateEngine")]
-    public async Task<ActionResult<EngineDto>> CreateEngine([FromForm] CreateEngineDto dto)
+    public async Task<ActionResult<EngineDto>> CreateEngine([FromBody] CreateEngineDto dto)
     {
         var engine = await _engineService.CreateEngineAsync(dto);
         if (!ModelState.IsValid) return BadRequest();
@@ -62,7 +62,7 @@ public class EngineController : ControllerBase
     }
     
     [HttpPut("UpdateEngine")]
-    public async Task<ActionResult<EngineDto>> UpdateEngine([FromForm] int id,[FromForm] UpdateEngineDto dto)
+    public async Task<ActionResult<EngineDto>> UpdateEngine([FromBody] int id,[FromForm] UpdateEngineDto dto)
     {
         await _engineService.UpdateEngineAsync(id, dto);
         return Ok();

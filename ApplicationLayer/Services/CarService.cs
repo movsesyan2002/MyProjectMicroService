@@ -81,7 +81,7 @@ public class CarService : ICarService
 
     
     
-    public async Task CreateAsync(CreateCarDto dto)
+    public async Task<CarDto?> CreateAsync(CreateCarDto dto)
     {
         if (dto.Year != default)
             dto.Year = DateTime.SpecifyKind(dto.Year, DateTimeKind.Utc);
@@ -98,7 +98,7 @@ public class CarService : ICarService
         }
         
         await _carRepository.AddAsync(entity);
-        
+        return _mapper.Map<CarDto?>(entity);
     }
 
     public async Task UpdateCarAsync(int id, UpdateCarDto updated)

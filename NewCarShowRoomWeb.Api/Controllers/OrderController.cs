@@ -52,7 +52,7 @@ public class OrderController : ControllerBase
     }
 
     [HttpPost("CreateOrder")]
-    public async Task<ActionResult<OrderDto>> CreateAsync([FromForm]CreateOrderDto dto)
+    public async Task<ActionResult<OrderDto>> CreateAsync([FromBody]CreateOrderDto dto)
     {
         var order = await _orderService.CreateAsync(dto);
         if (!ModelState.IsValid) return BadRequest();
